@@ -1,24 +1,61 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, FC, ReactElement, useEffect } from 'react';
+import ItemCard from './components/itemCard/Card'
+import HeaderCard from './components/headerCard/HeaderCard'
+import SectionDivider from './components/sectionDivider/SectionDivider'
+import './App.scss';
 
-function App() {
+type reportType = {
+  title: string
+  description: string
+  severity: string
+  id?: number
+  tags: string[]
+}
+
+const App: FC = (): ReactElement => {
+  const [reports, setReports] = useState<reportType[]>([]);
+
+  useEffect(() => {
+    const saveReports = localStorage.getItem('reports');
+    if (saveReports) {
+      setReports(JSON.parse(saveReports));
+    }
+  }, [])
+
+  const updateReports = (report: reportType) => {
+    report.id = reports.length + 1;
+    report.tags = [report.severity];
+    const newReport = [report, ...reports];
+    localStorage.setItem('reports', JSON.stringify(newReport))
+    setReports(newReport)
+  }
+  const deleteReport = (reportId: number) => {
+    const update = reports.filter((report) => report.id !== reportId);
+    localStorage.setItem('reports', JSON.stringify(update))
+    setReports(update);
+  }
+  const addTag = ((reportId: number, tag: string) => {
+    const newReport = reports.map((report: reportType) => {
+      if (report.id === reportId) {
+        report.tags = [...report.tags, tag]
+        return report
+      }
+      return report;
+    });
+    localStorage.setItem('reports', JSON.stringify(newReport))
+    setReports(newReport);
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <div className="container">
+        <HeaderCard updateReports={updateReports} />
+        <SectionDivider reportLength={reports.length} />
+        <div className="item-card-container">
+          {reports.map((report: reportType) => (
+            <ItemCard deleteReport={deleteReport} addTag={addTag} key={report.id} report={report} />
+          ))}
+        </div>
+      </div>
     </div>
   );
 }

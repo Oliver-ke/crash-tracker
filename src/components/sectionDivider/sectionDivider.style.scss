@@ -1,0 +1,32 @@
+.section-divider{
+  width: 100%;
+  margin-top: 3rem;
+  height: 40px;
+  position: relative;
+  .line{
+    min-width: 100%;
+    min-height: 3px;
+    background-color: #f4f4f4;
+    position: absolute;
+    top: calc(40px / 2);
+  }
+  .report-count{
+   position: absolute;
+   left: 50%;
+   width: 100px;
+   margin-left: -50px;
+   top: 50%;
+   height: 30px;
+   margin-top: -15px;
+   border-radius: 15px;
+   text-align: center;
+   background: #ffff;
+   border: 2px solid #ccc;
+    h4{
+      margin: 0;
+      line-height: 28px;
+      font-size: 14px;
+      color: rgba(0,0,0,0.8);
+    }
+  }
+}

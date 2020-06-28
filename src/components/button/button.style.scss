@@ -1,0 +1,26 @@
+.custom-btn{
+  background: #8E8EEC;
+  color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 18px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  cursor: pointer;
+  border: 2px solid #8E8EEC;
+  font-family: inherit;
+  outline: none;
+  i{
+    margin: 0 5px;
+    color: #F3F3FC;
+  }
+  .with-icon-only {
+    font-size: 25px;
+    border-radius: 50%;
+  }
+  &.invert{
+    background: #fff;
+    color: #8E8EEC;
+  }
+}

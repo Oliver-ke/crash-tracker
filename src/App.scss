@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Muli:wght@400;500&display=swap');
+
+body {
+  margin: 0;
+  font-family: 'Muli', sans-serif;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.app {
+  background: #F9FCFF;
+  min-height: 100vh;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+  .container{
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+}
+
+

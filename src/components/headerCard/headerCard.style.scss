@@ -1,0 +1,59 @@
+
+.header-card{
+  background: #FFFFFF;
+  width:  100%;
+  border-radius: 15px;
+  box-shadow: 0px 20px 15px rgba(142, 142, 236, 0.169073);
+  padding: 30px 40px;
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h3{
+      font-family: Muli;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 25px;
+      margin: 0;
+      line-height: 35px;
+      color: #242E4C;
+    }
+  }
+  .card-body{
+    margin-top: 1.5rem;
+    form {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      .column {
+        width: 48%;
+      }
+      .controls {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 1rem;
+        label{
+          margin-bottom: 5px;
+          font-size: 16px;
+          color: #242E4C ;
+        }
+        input, textarea, select {
+          background: #ffffff;
+          border: 2px solid #d8d8d8;
+          border-radius: 5px;
+          padding: 7px 10px;
+          outline: none;
+          font-size: 16px;
+          &:focus {
+            box-shadow: 0 0 3px #242E4C;
+          }
+        }
+        textarea{
+          height: 100px;
+        }
+      }
+    }
+   
+    
+  }
+}
