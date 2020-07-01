@@ -8,7 +8,7 @@ type reportType = {
   title: string
   description: string
   severity: string
-  id?: number
+  id?: string
   tags: string[]
 }
 

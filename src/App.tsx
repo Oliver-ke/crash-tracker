@@ -8,7 +8,7 @@ type reportType = {
   title: string
   description: string
   severity: string
-  id?: number
+  id?: string
   tags: string[]
 }
 
@@ -23,18 +23,18 @@ const App: FC = (): ReactElement => {
   }, [])
 
   const updateReports = (report: reportType) => {
-    report.id = reports.length + 1;
+    report.id = Math.random().toString(36).substr(2, 5);
     report.tags = [report.severity];
     const newReport = [report, ...reports];
     localStorage.setItem('reports', JSON.stringify(newReport))
     setReports(newReport)
   }
-  const deleteReport = (reportId: number) => {
+  const deleteReport = (reportId: string) => {
     const update = reports.filter((report) => report.id !== reportId);
     localStorage.setItem('reports', JSON.stringify(update))
     setReports(update);
   }
-  const addTag = ((reportId: number, tag: string) => {
+  const addTag = ((reportId: string, tag: string) => {
     const newReport = reports.map((report: reportType) => {
       if (report.id === reportId) {
         report.tags = [...report.tags, tag]
